@@ -13,6 +13,12 @@ The study analyzed an LRP model structured with specific relevance propagation r
 
 ![LRP Model Structure](finally-lrp-vgg.png)
 
+## LRP Output Map Accuracy Calculation
+
+The accuracy of the LRP model is assessed using the Intersection over Union (IoU) measure, which compares LRP-generated relevance maps with actual MRI segmentation masks. Instead of directly equating the relevance map to a segmentation mask, a relevance map mask is created by assigning a quantile threshold. This threshold converts the relevance values into a binary mask, allowing only the top percentage of values, such as the 90th percentile, to be included in the mask.
+
+This binary mask is then compared to the segmentation mask to evaluate the model's effectiveness in identifying critical brain tumor areas. The IoU measure is particularly valuable as it provides a precise, normalized measurement of overlap and allows for an objective comparison across different models, incorporating both precision and recall to avoid biased assessments.
+
 ## Dataset
 The study utilizes the [Figshare Brain Tumor Dataset](https://www.kaggle.com/datasets/ashkhagan/figshare-brain-tumor-dataset) available on Kaggle. This dataset includes a variety of brain MRI images used to analyze the effectiveness of LRP parameters in classifying different types of brain tumors.
 
